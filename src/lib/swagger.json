@@ -1,0 +1,168 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cash India API",
+        "description": "API for Cash Indi product",
+        "version": "1.0.0",
+        "license": {
+            "name": "MIT",
+            "url": "http://opensource.org/licenses/mit"
+        }
+    },
+    "host": "localhost:5200",
+    "basePath": "/api/v1/",
+    "tags": [
+        {
+            "name": "Users",
+            "description": " API for User in Cash India"
+        }
+    ],
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get List of users in Cash India",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create new user in Cash India",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we wish to create",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Fail, Bad request"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Get the User dettails by Id",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get User by Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Fail, Bad request"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Users"],
+                "summary": "Update User by Id",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Update User with new values",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Fail, Bad request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Users"],
+                "summary": "Get User by Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Fail, Bad request"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "number"
+                }
+            }
+        },
+        "Users": {
+            "type": "array",
+            "items": {
+                "type": "object",
+
+                "$ref": "#/definitions/User"
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "strict": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": ".",
+        "resolveJsonModule": true,
+        "esModuleInterop": true
+    },
+    "lib": ["es2015"],
+    "include": ["src/**/*", "src/lib/swagger.json"],
+    "exclude": ["node_modules", "**/*spec.ts"]
+}
