@@ -106,7 +106,6 @@ const getUserChat = async (req: Request, res: Response) => {
             isGroupChat: false,
             users: [userId, myId]
         };
-console.log(chatData)
         try {
             const createChat = await Chat.create(chatData);
             const fullChat = await Chat.findOne({ _id: createChat._id }).populate('users', '-password');
